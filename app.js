@@ -36,40 +36,60 @@ images = [
 ]
 
 var counter = 0;
-
-
+// .find('.current').animate({"margin-left":"400px"})
 
 function renderWindow(){
-    $content.append('<div id="item" style="background-image: url(' + images[counter].image + ');"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>');
-    $content.append('<div id="item" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>');
+    var $first = '<div id="item" class="first" style="background-image: url(' + images[counter].image + ');"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>';
+    var $second = '<div id="item" class="second" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>'
+    $content.append($second);
+    $content.append($first);
 }
 
 function nextItem(){
-    counter ++;
-    $content.empty();
-    if(counter <= 3){
-        $content.append('<div id="item" style="background-image: url(' + images[counter].image + ');"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>');
-        $content.append('<div id="item" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>');
-    }
-    if(counter > 3){
-        counter = 0;
-        $content.append('<div id="item" style="background-image: url(' + images[counter].image + ');"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>');
-        $content.append('<div id="item" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>');
-    }
+    $content.find('.first').fadeOut(() => {
+        counter++;
+        $content.find('.first').remove();
+        $content.find('.second').removeClass('second').addClass('first');
+        if(counter <= 3){
+            var $new = '<div id="item" class="second" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>'
+            $content.find('.first').before($new)
+        }
+        if(counter > 3){
+            counter = 0;
+            var $new = '<div id="item" class="second" style="background-image: url(' + images[counter].image + ')"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>'
+            $content.find('.first').before($new)
+        
+        }
+    });
+
 }
 
 function previousItem(){
-    counter --;
-    $content.empty();
-    if(counter >= 0){
-        $content.append('<div id="item" style="background-image: url(' + images[counter].image + ');"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>');
-        $content.append('<div id="item" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>');
-    }
-    if(counter < 0){
-        counter = 3;
-        $content.append('<div id="item" style="background-image: url(' + images[counter].image + ');"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>');
-        $content.append('<div id="item" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>');
-    }
+    $content.find('.second').fadeOut(() => {
+        counter--;
+        $content.find('.second').remove();
+        $content.find('.first').removeClass('first').addClass('second');
+        if(counter >= 0){
+            var $new = '<div id="item" class="first" style="background-image: url(' + images[counter].image + ')"><p id="title"> ' + images[counter].title + ' </p><p id="caption"> ' + images[counter].caption + ' </p></div>'
+            $content.append($new)
+        }
+        if(counter < 0){
+            counter = 3;
+            var $new = '<div id="item" class="first" style="background-image: url(' + images[counter + 1].image + ')"><p id="title"> ' + images[counter + 1].title + ' </p><p id="caption"> ' + images[counter + 1].caption + ' </p></div>'
+            $content.append($new)
+        }
+    });
+    
 }
 
+function animate(){
+
+    renderWindow();
+    setInterval(() => {
+        nextItem()
+    }, 5000);
+
+}
+
+// animate();
 renderWindow();
