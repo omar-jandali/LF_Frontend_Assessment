@@ -79,7 +79,7 @@ function previousItem(){
             $content.append($new)
         }
     });
-    
+
 }
 
 function animate(){
@@ -91,5 +91,5 @@ function animate(){
 
 }
 
-// animate();
-renderWindow();
+animate();
+// renderWindow();
