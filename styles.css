@@ -1,30 +1,48 @@
-#carousel {
-    margin-left: auto;
-    margin-right: auto;
+body {
     height: 100%;
     width: 100%;
-    display: flex;
+    margin: 0%;
+    padding: 0%;
+    background-color: antiquewhite;
 }
 
-#content {
-    text-align: center;
-}
-
-#item {
-    display: inline-block;
+#app {
     height: 500px;
+    width: 1024px;
+}
+
+#slider {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.slides {
+    display: block;
+    height: 100%;
+    width: 3082px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.slide > div {
+    position: relative;
+}
+
+.slide {
+    display: inline-block;
+    list-style-type: none;
     width: 500px;
-    margin-top: 0px;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-bottom: 0px;
-    text-align: center;
+    height: 500px;
+    margin: 5px;
+    background-image: url('http://via.placeholder.com/1000x1000');
 }
 
 #title {
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
     margin-top: 150px;
     font-size: 32px;
     text-align: center;
@@ -36,7 +54,7 @@
     position: absolute;
     width: 350px;
     font-size: 22px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
     margin-top: 250px;
 }

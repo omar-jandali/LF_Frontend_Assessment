@@ -10,22 +10,56 @@
 </head>
 <body>
     <div id="app">
-        <div id="carousel">
-            <!-- this crousel will be able to look infinitiey. I will do this by assigning
-            a set of images a number or id value. Once the user has cycled to the last
-            image, it will reset the cycle and start from the beginning. 
-            Point 1 => image 1 and 2
-            Point 2 => image 2 and 3
-            Point 3 => image 3 and 4
-            Point 4 => image 4 and 5
-            Cycle Reset -->
-            <button id="previous" onclick="previousItem()"><</button>
-            <div id="content">
-                <!-- this is content that will be static and absolute. it will not move 
-                as the backend images move. -->
-            </div>
-            <button id="next" onclick="nextItem()">></button>
+        <!-- this crousel will be able to look infinitiey. I will do this by assigning
+        a set of images a number or id value. Once the user has cycled to the last
+        image, it will reset the cycle and start from the beginning. 
+        Point 1 => image 1 and 2
+        Point 2 => image 2 and 3
+        Point 3 => image 3 and 4
+        Point 4 => image 4 and 5
+        Cycle Reset -->
+        <button id="previous" onclick="previousItem()"><</button>
+        <div id="slider">
+            <ul class="slides">
+                <li class="slide 0">
+                    <div>
+                        <span id="title">Vega</span>
+                        <span id="caption">Vega is one of the leading global plant-based nutrition companies.</span>
+                    </div>
+                </li>
+                <li class="slide 1">
+                    <div>
+                        <span id="title">EightSleep</span>
+                        <span id="caption">Eight has developed the world\'s first smart mattress.</span>
+                    </div>
+                </li>
+                <li class="slide 2">
+                    <div>
+                        <span id="title">The Hundereds.com</span>
+                        <span id="caption">The Hundereds Shopify Plus eCommerse site features a 100% custom and seamless Wordpress integraion.</span>
+                    </div>
+                </li>
+                <li class="slide 3">
+                    <div >
+                        <span id="title">PRG Nation</span>
+                        <span id="caption">InnerSelf Technologies hopes to create4 a PRG Nation, built around their new bio-stimulant and monitoring system.</span>
+                    </div>
+                </li>
+                <li class="slide 4">
+                    <div>
+                        <span id="title">Qualo.com</span>
+                        <span id="caption">Immerseive, highly-branded, and customer-focused shopping experience.</span>
+                    </div>
+                </li>
+                <li class="slide 0">
+                    <div>
+                        <span id="title">Vega</span>
+                        <span id="caption">Vega is one of the leading global plant-based nutrition companies.</span>
+                    </div>
+                </li>
+            </ul>
         </div>
+        <button id="next" onclick="nextItem()">></button>
     </div>
     <script src="app.js"></script>
     <!-- <script src="bundle.js"></script> -->
